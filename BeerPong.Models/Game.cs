@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BeerPong.Models
 {
@@ -16,6 +12,7 @@ namespace BeerPong.Models
             this.teams = new HashSet<Team>();
         }
 
+        [Key]
         public int Id { get; set; }
       
         public virtual ICollection<Team> Teams

@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using BeerPong.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -22,5 +21,7 @@ namespace BeerPong.Data
         public virtual IDbSet<Team> Teams { get; set; }
 
         public virtual IDbSet<Game> Games { get; set; }
+
+        public virtual IDbSet<Tourney> Tourneys { get; set; }
     }
 }

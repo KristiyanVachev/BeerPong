@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BeerPong.Models
 {
     public class Team
     {
+        private ICollection<Game> games;
+
+        public Team()
+        {
+            this.games = new HashSet<Game>();
+        }
+
+        [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -17,9 +22,15 @@ namespace BeerPong.Models
 
         public Player PlayerTwo { get; set; }
 
-        public int GameId { get; set; }
+        public int TourneyId { get; set; }
 
-        [ForeignKey("GameId")]
-        public virtual Game Game { get; set; }
+        [ForeignKey("TourneyId")]
+        public virtual Tourney Tourney { get; set; }
+
+        public virtual ICollection<Game> Games
+        {
+            get { return this.games; }
+            set { this.games = value; }
+        }
     }
 }
