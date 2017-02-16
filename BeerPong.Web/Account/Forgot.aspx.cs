@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
+using BeerPong.Auth;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using BeerPong.Web.Models;
 
 namespace BeerPong.Web.Account
 {
@@ -20,7 +19,7 @@ namespace BeerPong.Web.Account
             {
                 // Validate the user's email address
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                ApplicationUser user = manager.FindByName(Email.Text);
+                var user = manager.FindByName(Email.Text);
                 if (user == null || !manager.IsEmailConfirmed(user.Id))
                 {
                     FailureText.Text = "The user either does not exist or is not confirmed.";

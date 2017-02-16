@@ -341,7 +341,6 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -361,7 +360,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -388,6 +386,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeerPong.Auth\BeerPong.Auth.csproj">
+      <Project>{9f378fc5-3be1-4903-9d31-df5591549f6d}</Project>
+      <Name>BeerPong.Auth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeerPong.Data\BeerPong.Data.csproj">
+      <Project>{52279c7c-c009-4ae0-b170-87dac9571584}</Project>
+      <Name>BeerPong.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeerPong.Models\BeerPong.Models.csproj">
+      <Project>{e2b7a52e-aa3e-4fc2-ae67-70791bccb4e0}</Project>
+      <Name>BeerPong.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

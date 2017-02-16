@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using BeerPong.Auth;
+using BeerPong.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using BeerPong.Web.Models;
 
 namespace BeerPong.Web.Account
 {
@@ -15,7 +15,7 @@ namespace BeerPong.Web.Account
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-            var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
+            var user = new User { UserName = Email.Text, Email = Email.Text };
             IdentityResult result = manager.Create(user, Password.Text);
             if (result.Succeeded)
             {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
+using BeerPong.Auth;
 using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using BeerPong.Web.Models;
 
 namespace BeerPong.Web.Account
 {

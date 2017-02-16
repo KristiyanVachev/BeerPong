@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using BeerPong.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeerPong.Data
 {
-    public class BeerPongDbContext : DbContext
+    public class BeerPongDbContext : IdentityDbContext<User>
     {
-        public BeerPongDbContext()
+        public BeerPongDbContext(): base("BeerPongDb")
         {
 
+        }
+
+        public static BeerPongDbContext Create()
+        {
+            return new BeerPongDbContext();
         }
 
         public virtual IDbSet<Player> Players { get; set; }
