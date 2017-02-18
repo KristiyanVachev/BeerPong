@@ -12,10 +12,10 @@ namespace BeerPong.TestConsoleClient
     {
         static void Main()
         {
-            var dbContext = new BeerPongDbContext();
+            //var dbContext = new BeerPongDbContext();
 
-            dbContext.Players.Add(new Player {Id = 0, Name = "Koala"});
-            dbContext.SaveChanges();
+            //dbContext.Players.Add(new Player {Id = 0, Name = "Koala"});
+            //dbContext.SaveChanges();
 
         }
     }

@@ -16,8 +16,16 @@ namespace BeerPong.Models
             this.games = new HashSet<Game>();
         }
 
+        public Tourney(string name)
+            : this()
+        {
+            this.Name = name;
+        }
+
         [Key]
         public int Id { get; set; }
+
+        public string Name { get; set; }
 
         public virtual ICollection<User> Users
         {
