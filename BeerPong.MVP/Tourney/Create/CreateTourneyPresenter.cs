@@ -6,20 +6,27 @@ namespace BeerPong.MVP.Tourney.Create
 {
     public class CreateTourneyPresenter : Presenter<ICreateTourneyView>
     {
-        //TODO propperty
-        private readonly ITourneyService service;
+        private ITourneyService service;
 
         public CreateTourneyPresenter(ICreateTourneyView view, ITourneyService service) : base(view)
         {
-            if (service == null)
-            {
-                throw new ArgumentNullException("Service cannot be null");
-            }
-
             this.service = service;
 
             this.View.MyCreateTourney += OnCreateTourney;
+        }
 
+        public ITourneyService Service
+        {
+            get { return this.service; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Service cannot be null");
+                }
+
+                this.service = value;
+            }
         }
         public void OnCreateTourney(object sender, CreateTourneyEventArgs e)
         {
