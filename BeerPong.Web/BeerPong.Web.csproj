@@ -245,6 +245,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Tourney\CreateTourney.aspx" />
+    <Content Include="Tourney\TourneyDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -422,6 +423,13 @@
     </Compile>
     <Compile Include="Tourney\CreateTourney.aspx.designer.cs">
       <DependentUpon>CreateTourney.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tourney\TourneyDetails.aspx.cs">
+      <DependentUpon>TourneyDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tourney\TourneyDetails.aspx.designer.cs">
+      <DependentUpon>TourneyDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -54,6 +54,10 @@
     <Compile Include="Tourney\Create\CreateTourneyPresenter.cs" />
     <Compile Include="Tourney\Create\CreateTourneyViewModel.cs" />
     <Compile Include="Tourney\Create\ICreateTourneyView.cs" />
+    <Compile Include="Tourney\Details\ITourneyDetailsView.cs" />
+    <Compile Include="Tourney\Details\TourneyDetailsEventArgs.cs" />
+    <Compile Include="Tourney\Details\TourneyDetailsPresenter.cs" />
+    <Compile Include="Tourney\Details\TourneyDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
