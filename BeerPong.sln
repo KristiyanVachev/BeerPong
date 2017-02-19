@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerPong.Services", "BeerPo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerPong.Factories", "BeerPong.Factories\BeerPong.Factories.csproj", "{BA3E2748-11CE-4296-A255-2DAA88F9F29F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerPong.Tests", "BeerPong.Tests\BeerPong.Tests.csproj", "{FA0860C0-D4FA-4C0D-BFC0-7076A3D1A9ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{BA3E2748-11CE-4296-A255-2DAA88F9F29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3E2748-11CE-4296-A255-2DAA88F9F29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3E2748-11CE-4296-A255-2DAA88F9F29F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA0860C0-D4FA-4C0D-BFC0-7076A3D1A9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA0860C0-D4FA-4C0D-BFC0-7076A3D1A9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA0860C0-D4FA-4C0D-BFC0-7076A3D1A9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA0860C0-D4FA-4C0D-BFC0-7076A3D1A9ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

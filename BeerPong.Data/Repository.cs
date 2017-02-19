@@ -25,14 +25,14 @@ namespace BeerPong.Data
 
         protected DbContext Context { get; set; }
 
-        public T GetById(object id)
-        {
-            return this.Set.Find(id);
-        }
-
         public IEnumerable<T> Entities
         {
             get { return this.Set; }
+        }
+        
+        public T GetById(object id)
+        {
+            return this.Set.Find(id);
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression)
