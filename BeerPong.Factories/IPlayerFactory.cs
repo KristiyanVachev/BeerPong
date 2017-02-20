@@ -2,10 +2,8 @@
 
 namespace BeerPong.Factories
 {
-    public interface ITourneyFactory
+    public interface IPlayerFactory
     {
-        Tourney CreateTourney(string name);
-
         Player CreatePlayer(Tourney tourney, User user);
     }
 }

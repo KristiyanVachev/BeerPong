@@ -5,12 +5,24 @@ namespace BeerPong.Models
 {
     public class Player
     {
-        [Key]
-        public int Id { get; set; }
+        public Player(Tourney tourney, User user)
+        {
+            //TODO Guard
+            this.Tourney = tourney;
+            this.User = user;
+        }
 
-        //public int UserId { get; set; }
+        [Key]
+        public int PlayerId { get; set; }
+
+        public string UserId { get; set; }
+
+        public int TourneyId { get; set; }
 
         //[ForeignKey("UserId")]
         public virtual User User { get; set; }
+
+        [ForeignKey("TourneyId")]
+        public virtual Tourney Tourney { get; set; }
     }
 }

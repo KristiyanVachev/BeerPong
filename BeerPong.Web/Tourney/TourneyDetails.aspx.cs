@@ -9,6 +9,7 @@ namespace BeerPong.Web.Tourney
     public partial class TourneyDetails : MvpPage<TourneyDetailsViewModel>, ITourneyDetailsView
     {
         public event EventHandler<TourneyDetailsEventArgs> MyTourneyDetails;
+        public event EventHandler<JoinTourneyEventArgs> JoinTourney;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,10 @@ namespace BeerPong.Web.Tourney
                 this.MyTourneyDetails?.Invoke(this, args);
 
                 this.TourneyName.InnerText = this.Model.Name;
+
+                //TODO: If user has joined, display leave tourney
+                //Model.IsJoined
+                //TODO If username is the same as tourney's creator, display start game button
             }
             catch (Exception)
             {
@@ -29,5 +34,12 @@ namespace BeerPong.Web.Tourney
             }
         }
 
+        protected void JoinButton_Click(object sender, EventArgs e)
+        {
+            //TODO extract model.Id
+            var args = new JoinTourneyEventArgs(false, Model.Id, this.Context);
+
+            this.JoinTourney.Invoke(this, args);
+        }
     }
 }

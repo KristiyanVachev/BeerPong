@@ -12,11 +12,15 @@ namespace BeerPong.Services
     {
         //TODO make them properties
         private readonly ITourneyFactory factory;
-        private readonly IRepository<Tourney> productRepository;
+        private readonly IRepository<Tourney> tourneyRepository;
+        private readonly IRepository<User> userRepository;
+        private readonly IRepository<Player> playerRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public TourneyService(ITourneyFactory factory, 
-            IRepository<Tourney> productRepository,
+        public TourneyService(ITourneyFactory factory,
+            IRepository<Tourney> tourneyRepository,
+            IRepository<User> userRepository,
+            IRepository<Player> playeRepository,
             IUnitOfWork unitOfWork)
         {
             if (factory == null)
@@ -24,7 +28,7 @@ namespace BeerPong.Services
                 throw new ArgumentNullException("Factory cannot be null");
             }
 
-            if (productRepository == null)
+            if (tourneyRepository == null)
             {
                 throw new ArgumentNullException("Repository cannot be null");
             }
@@ -35,7 +39,9 @@ namespace BeerPong.Services
             }
 
             this.factory = factory;
-            this.productRepository = productRepository;
+            this.tourneyRepository = tourneyRepository;
+            this.userRepository = userRepository;
+            this.playerRepository = playeRepository;
             this.unitOfWork = unitOfWork;
         }
 
@@ -43,7 +49,7 @@ namespace BeerPong.Services
         {
             var tourney = this.factory.CreateTourney(name);
 
-            this.productRepository.Add(tourney);
+            this.tourneyRepository.Add(tourney);
             this.unitOfWork.Commit();
 
             return tourney;
@@ -51,31 +57,45 @@ namespace BeerPong.Services
 
         public Tourney GetById(int id)
         {
-            var tourney = this.productRepository.GetById(id);
+            var tourney = this.tourneyRepository.GetById(id);
 
             return tourney;
         }
 
         public IEnumerable<Tourney> GetTourneys()
         {
-            return this.productRepository.Entities.ToList();
+            return this.tourneyRepository.Entities.ToList();
         }
 
         public void EditTourney(Tourney tourney)
         {
-            this.productRepository.Update(tourney);
+            this.tourneyRepository.Update(tourney);
             this.unitOfWork.Commit();
         }
 
         public void DeleteTourney(int tourneyId)
         {
-            var tourney = this.productRepository.GetById(tourneyId);
+            var tourney = this.tourneyRepository.GetById(tourneyId);
 
             if (tourney != null)
             {
-                this.productRepository.Delete(tourney);
+                this.tourneyRepository.Delete(tourney);
                 this.unitOfWork.Commit();
             }
+        }
+
+        public void JoinTourney(int tourneyId, string userId)
+        {
+            var tourney = this.tourneyRepository.GetById(tourneyId);
+            var user = this.userRepository.GetById(userId);
+
+            var newPlayer = this.factory.CreatePlayer(tourney, user);
+
+            this.playerRepository.Add(newPlayer);
+
+            //tourney.Players.Add(/*username*/);
+            //this.productRatingRepository.Add(newRating);
+            this.unitOfWork.Commit();
         }
     }
 }

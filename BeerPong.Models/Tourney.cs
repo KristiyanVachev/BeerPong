@@ -5,13 +5,13 @@ namespace BeerPong.Models
 {
     public class Tourney
     {
-        private ICollection<User> users;
+        private ICollection<Player> players;
         private ICollection<Team> teams;
         private ICollection<Game> games;
 
         public Tourney()
         {
-            this.users = new HashSet<User>();
+            this.players = new HashSet<Player>();
             this.teams = new HashSet<Team>();
             this.games = new HashSet<Game>();
         }
@@ -27,11 +27,12 @@ namespace BeerPong.Models
 
         public string Name { get; set; }
 
-        public virtual ICollection<User> Users
+        public virtual ICollection<Player> Players
         {
-            get { return this.users; }
-            set { this.users = value; }
+            get { return this.players; }
+            set { this.players = value; }
         }
+
         public virtual ICollection<Team> Teams
         {
             get { return this.teams; }

@@ -14,5 +14,7 @@ namespace BeerPong.Services.Contracts
         void EditTourney(Tourney tourney);
 
         void DeleteTourney(int tourneyId);
+
+        void JoinTourney(int tourneyId, string userId);
     }
 }

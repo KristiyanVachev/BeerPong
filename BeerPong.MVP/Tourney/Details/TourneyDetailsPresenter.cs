@@ -1,5 +1,6 @@
 ﻿using System;
 using BeerPong.Services.Contracts;
+using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 
 namespace BeerPong.MVP.Tourney.Details
@@ -8,6 +9,7 @@ namespace BeerPong.MVP.Tourney.Details
     {
         private ITourneyService service;
         private IViewModelFactory factory;
+        //private IJoinTourneyService joinTourneyService;
 
         public TourneyDetailsPresenter(ITourneyDetailsView view, ITourneyService service, IViewModelFactory factory) : base(view)
         {
@@ -15,6 +17,7 @@ namespace BeerPong.MVP.Tourney.Details
             this.Factory = factory;
 
             this.View.MyTourneyDetails += View_MyProductDetails;
+            this.View.JoinTourney += View_MyJoinTourney;
         }
 
         public ITourneyService Service
@@ -54,6 +57,15 @@ namespace BeerPong.MVP.Tourney.Details
             var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name);
 
             this.View.Model = viewModel;
+        }
+
+        public void View_MyJoinTourney(object sender, JoinTourneyEventArgs e)
+        {
+            var userId = e.Context.User.Identity.GetUserId();
+
+            var tourneyId = e.TourneyId;
+
+            this.Service.JoinTourney(tourneyId, userId);
         }
     }
 }
