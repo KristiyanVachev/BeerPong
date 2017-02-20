@@ -17,14 +17,17 @@ namespace BeerPong.Web.Tourney
             {
                 int tourneyId = int.Parse(this.Request.QueryString["id"]);
 
-                var args = new TourneyDetailsEventArgs(tourneyId);
+                var args = new TourneyDetailsEventArgs(tourneyId, this.Context);
 
                 this.MyTourneyDetails?.Invoke(this, args);
 
                 this.TourneyName.InnerText = this.Model.Name;
 
-                //TODO: If user has joined, display leave tourney
-                //Model.IsJoined
+                if (this.Model.HasJoined)
+                {
+                    this.JoinButton.Text = "Leave";
+                }
+
                 //TODO If username is the same as tourney's creator, display start game button
             }
             catch (Exception)

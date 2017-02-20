@@ -97,5 +97,20 @@ namespace BeerPong.Services
             //this.productRatingRepository.Add(newRating);
             this.unitOfWork.Commit();
         }
+
+        public bool UserHasJoined(int tourneyId, string userId)
+        {
+            var tourney = this.tourneyRepository.GetById(tourneyId);
+
+            //TODO Contains
+            var player = tourney.Players.FirstOrDefault(x => x.UserId.Equals(userId));
+
+            if (player == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BeerPong.Services.Contracts;
 using Microsoft.AspNet.Identity;
 using WebFormsMvp;
@@ -50,17 +51,21 @@ namespace BeerPong.MVP.Tourney.Details
 
         public void View_MyProductDetails(object sender, TourneyDetailsEventArgs e)
         {
-            var id = e.Id;
+            var tourneyId = e.Id;
+            var userId = e.Context.User.Identity.GetUserId();
 
-            var tourney = this.Service.GetById(id);
+            var tourney = this.Service.GetById(tourneyId);
 
-            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name);
+            var playerHasJoined = this.Service.UserHasJoined(tourneyId, userId);
+
+            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined);
 
             this.View.Model = viewModel;
         }
 
         public void View_MyJoinTourney(object sender, JoinTourneyEventArgs e)
         {
+            //TODO don't join if player has already joined
             var userId = e.Context.User.Identity.GetUserId();
 
             var tourneyId = e.TourneyId;

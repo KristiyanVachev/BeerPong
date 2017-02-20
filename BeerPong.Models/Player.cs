@@ -5,6 +5,11 @@ namespace BeerPong.Models
 {
     public class Player
     {
+        public Player()
+        {
+            
+        }
+
         public Player(Tourney tourney, User user)
         {
             //TODO Guard
