@@ -96,6 +96,17 @@ namespace BeerPong.Services
             this.unitOfWork.Commit();
         }
 
+        public void LeaveTourney(int tourneyId, string userId)
+        {
+            //TODO do something when playerToRemove is not found
+            //TODO: Create a playerRepository which removes a player by given userId and tourneyId
+            var playerToRemove = playerRepository.Entities.FirstOrDefault(x => x.UserId == userId && x.TourneyId == tourneyId);
+
+            playerRepository.Delete(playerToRemove);
+
+            this.unitOfWork.Commit();
+        }
+
         public bool UserHasJoined(int tourneyId, string userId)
         {
             var tourney = this.tourneyRepository.GetById(tourneyId);

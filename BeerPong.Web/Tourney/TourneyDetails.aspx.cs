@@ -11,6 +11,8 @@ namespace BeerPong.Web.Tourney
         public event EventHandler<TourneyDetailsEventArgs> MyTourneyDetails;
         public event EventHandler<JoinTourneyEventArgs> JoinTourney;
 
+        private bool userHasJoined = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -21,9 +23,12 @@ namespace BeerPong.Web.Tourney
 
                 this.MyTourneyDetails?.Invoke(this, args);
 
+                this.userHasJoined = this.Model.HasJoined;
+
                 this.TourneyName.InnerText = this.Model.Name;
 
-                if (this.Model.HasJoined)
+                //TODO hide if userHasJoined is not assigned
+                if (userHasJoined)
                 {
                     this.JoinButton.Text = "Leave";
                 }
@@ -39,10 +44,19 @@ namespace BeerPong.Web.Tourney
 
         protected void JoinButton_Click(object sender, EventArgs e)
         {
-            //TODO extract model.Id
-            var args = new JoinTourneyEventArgs(false, Model.Id, this.Context);
+            var args = new JoinTourneyEventArgs(userHasJoined, Model.Id, this.Context);
 
             this.JoinTourney.Invoke(this, args);
+            userHasJoined = this.Model.HasJoined;
+
+            if (userHasJoined)
+            {
+                this.JoinButton.Text = "Leave";
+            }
+            else
+            {
+                this.JoinButton.Text = "Join";
+            }
         }
     }
 }

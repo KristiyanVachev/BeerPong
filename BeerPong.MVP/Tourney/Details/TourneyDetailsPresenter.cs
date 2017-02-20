@@ -67,10 +67,18 @@ namespace BeerPong.MVP.Tourney.Details
         {
             //TODO don't join if player has already joined
             var userId = e.Context.User.Identity.GetUserId();
-
             var tourneyId = e.TourneyId;
 
-            this.Service.JoinTourney(tourneyId, userId);
+            if (!e.IsJoined)
+            {
+                this.Service.JoinTourney(tourneyId, userId);
+                this.View.Model.HasJoined = true;
+            }
+            else
+            {
+                this.service.LeaveTourney(tourneyId, userId);
+                this.View.Model.HasJoined = false;
+            }
         }
     }
 }
