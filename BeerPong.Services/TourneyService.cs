@@ -92,9 +92,7 @@ namespace BeerPong.Services
             var newPlayer = this.factory.CreatePlayer(tourney, user);
 
             this.playerRepository.Add(newPlayer);
-
-            //tourney.Players.Add(/*username*/);
-            //this.productRatingRepository.Add(newRating);
+            
             this.unitOfWork.Commit();
         }
 
@@ -102,15 +100,15 @@ namespace BeerPong.Services
         {
             var tourney = this.tourneyRepository.GetById(tourneyId);
 
-            //TODO Contains
-            var player = tourney.Players.FirstOrDefault(x => x.UserId.Equals(userId));
-
-            if (player == null)
+            foreach (var player in tourney.Players)
             {
-                return false;
+                if (player.UserId == userId)
+                {
+                    return true;
+                }
             }
 
-            return true;
+            return false;
         }
     }
 }
