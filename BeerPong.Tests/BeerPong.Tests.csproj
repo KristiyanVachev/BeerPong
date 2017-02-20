@@ -81,15 +81,24 @@
   <ItemGroup>
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TourneyServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BeerPong.Data\BeerPong.Data.csproj">
       <Project>{52279c7c-c009-4ae0-b170-87dac9571584}</Project>
       <Name>BeerPong.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BeerPong.Factories\BeerPong.Factories.csproj">
+      <Project>{ba3e2748-11ce-4296-a255-2daa88f9f29f}</Project>
+      <Name>BeerPong.Factories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BeerPong.Models\BeerPong.Models.csproj">
       <Project>{e2b7a52e-aa3e-4fc2-ae67-70791bccb4e0}</Project>
       <Name>BeerPong.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeerPong.Services\BeerPong.Services.csproj">
+      <Project>{e3000660-b521-458e-9aea-eab89801677d}</Project>
+      <Name>BeerPong.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
