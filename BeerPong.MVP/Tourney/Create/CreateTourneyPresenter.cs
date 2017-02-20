@@ -1,5 +1,6 @@
 ﻿using System;
 using BeerPong.Services.Contracts;
+using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace BeerPong.MVP.Tourney.Create
@@ -20,11 +21,7 @@ namespace BeerPong.MVP.Tourney.Create
             get { return this.service; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Service cannot be null");
-                }
-
+                Guard.WhenArgument(value, "service").IsNull();
                 this.service = value;
             }
         }

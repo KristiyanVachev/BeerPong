@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BeerPong.Services.Contracts;
+using Bytes2you.Validation;
 using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 
@@ -26,11 +27,7 @@ namespace BeerPong.MVP.Tourney.Details
             get { return this.service; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Service cannot be null");
-                }
-
+                Guard.WhenArgument(value, "service").IsNull();
                 this.service = value;
             }
         }
@@ -40,11 +37,7 @@ namespace BeerPong.MVP.Tourney.Details
             get { return this.factory; }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Factory cannot be null");
-                }
-
+                Guard.WhenArgument(value, "factory").IsNull();
                 this.factory = value;
             }
         }

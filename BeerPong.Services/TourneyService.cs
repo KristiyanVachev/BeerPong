@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BeerPong.Data.Contracts;
 using BeerPong.Factories;
 using BeerPong.Models;
 using BeerPong.Services.Contracts;
+using Bytes2you.Validation;
 
 namespace BeerPong.Services
 {
@@ -23,20 +23,11 @@ namespace BeerPong.Services
             IRepository<Player> playeRepository,
             IUnitOfWork unitOfWork)
         {
-            if (factory == null)
-            {
-                throw new ArgumentNullException("Factory cannot be null");
-            }
-
-            if (tourneyRepository == null)
-            {
-                throw new ArgumentNullException("Repository cannot be null");
-            }
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("Unit of work cannot be null");
-            }
+            Guard.WhenArgument(factory, "factory").IsNull().Throw();
+            Guard.WhenArgument(tourneyRepository, "tourneyRepository").IsNull().Throw();
+            Guard.WhenArgument(userRepository, "userRepository").IsNull().Throw();
+            Guard.WhenArgument(playeRepository, "playeRepository").IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, "unitOfWork").IsNull().Throw();
 
             this.factory = factory;
             this.tourneyRepository = tourneyRepository;
