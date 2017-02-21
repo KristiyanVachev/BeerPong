@@ -57,6 +57,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administration\Tourneys\DeleteTourneyEventArgs.cs" />
+    <Compile Include="Administration\Tourneys\EditTourneyEventArgs.cs" />
+    <Compile Include="Administration\Tourneys\ITourneyView.cs" />
+    <Compile Include="Administration\Tourneys\TourneyPresenter.cs" />
     <Compile Include="IViewModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tourney\Create\CreateTourneyEventArgs.cs" />
@@ -69,6 +73,10 @@
     <Compile Include="Tourney\Details\TourneyDetailsEventArgs.cs" />
     <Compile Include="Tourney\Details\TourneyDetailsPresenter.cs" />
     <Compile Include="Tourney\Details\TourneyDetailsViewModel.cs" />
+    <Compile Include="Tourney\List\ITourneyListView.cs" />
+    <Compile Include="Tourney\List\TourneyListEventArgs.cs" />
+    <Compile Include="Tourney\List\TourneyListPresenter.cs" />
+    <Compile Include="Tourney\List\TourneyListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

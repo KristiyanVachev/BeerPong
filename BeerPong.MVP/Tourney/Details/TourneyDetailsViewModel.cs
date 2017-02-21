@@ -11,6 +11,13 @@ namespace BeerPong.MVP.Tourney.Details
 
         }
 
+        public TourneyDetailsViewModel(int id, string name, string status)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Status = status;
+        }
+
         public TourneyDetailsViewModel(int id, string name, bool hasJoined, ICollection<string> players, bool isOwner, string status)
         {
             this.Id = id;

@@ -201,6 +201,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Administration\Tourneys.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -246,6 +247,7 @@
     <Content Include="Site.Master" />
     <Content Include="Tourney\CreateTourney.aspx" />
     <Content Include="Tourney\TourneyDetails.aspx" />
+    <Content Include="Tourney\TourneyList.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -366,6 +368,12 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administration\Tourneys.aspx.cs">
+      <DependentUpon>Tourneys.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Tourneys.aspx.designer.cs">
+      <DependentUpon>Tourneys.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -430,6 +438,13 @@
     </Compile>
     <Compile Include="Tourney\TourneyDetails.aspx.designer.cs">
       <DependentUpon>TourneyDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tourney\TourneyList.aspx.cs">
+      <DependentUpon>TourneyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tourney\TourneyList.aspx.designer.cs">
+      <DependentUpon>TourneyList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
