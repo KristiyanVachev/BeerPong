@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using BeerPong.Data.Contracts;
 using BeerPong.Factories;
 using BeerPong.Models;
@@ -104,7 +105,12 @@ namespace BeerPong.Services
             var tourney = this.tourneyRepository.GetById(tourneyId);
             
             //TODO: get by name
+            var winner = this.userRepository.GetAll(x => x.Email == winnerName).FirstOrDefault();
 
+            if (winner != null)
+            {
+                tourney.Winner = winner;
+            }
 
             tourney.Status = "Finished";
             this.tourneyRepository.Update(tourney);
