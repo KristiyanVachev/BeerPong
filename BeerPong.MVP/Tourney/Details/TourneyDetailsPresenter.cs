@@ -51,6 +51,7 @@ namespace BeerPong.MVP.Tourney.Details
             var tourney = this.Service.GetById(tourneyId);
 
             var playerHasJoined = this.Service.UserHasJoined(tourneyId, userId);
+            var userIsOwner = this.service.UserIsOwner(tourneyId, userId);
 
             List<string> playerNames = new List<string>();
             foreach (var tourneyPlayer in tourney.Players)
@@ -58,7 +59,7 @@ namespace BeerPong.MVP.Tourney.Details
                 playerNames.Add(tourneyPlayer.Name);
             }
 
-            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames);
+            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames, userIsOwner);
 
             this.View.Model = viewModel;
         }

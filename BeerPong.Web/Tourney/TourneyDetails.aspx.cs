@@ -13,6 +13,7 @@ namespace BeerPong.Web.Tourney
         public event EventHandler<JoinTourneyEventArgs> JoinTourney;
 
         private bool userHasJoined = false;
+        private bool userIsOwner = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,10 +25,15 @@ namespace BeerPong.Web.Tourney
 
                 this.MyTourneyDetails?.Invoke(this, args);
 
-                this.userHasJoined = this.Model.HasJoined;
-
                 this.TourneyName.InnerText = this.Model.Name;
 
+                //TODO userIsLogged and tourney is open
+                if (Request.IsAuthenticated)
+                {
+                    this.OnOpenEvent.Visible = true;
+                }
+
+                this.userHasJoined = this.Model.HasJoined;
                 //TODO hide if userHasJoined is not assigned
                 if (userHasJoined)
                 {
@@ -35,6 +41,13 @@ namespace BeerPong.Web.Tourney
                 }
 
                 //TODO If username is the same as tourney's creator, display start game button
+                this.userIsOwner = this.Model.IsOwner;
+
+                if (this.userIsOwner)
+                {
+                    this.OwnerOptions.Visible = true;
+                }
+
             }
             catch (Exception)
             {

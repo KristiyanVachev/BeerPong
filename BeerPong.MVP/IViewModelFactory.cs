@@ -6,6 +6,6 @@ namespace BeerPong.MVP
 {
     public interface IViewModelFactory
     {
-        TourneyDetailsViewModel CreateTourneyDetailsViewModel(int id, string name, bool hasJoined, ICollection<string> players);
+        TourneyDetailsViewModel CreateTourneyDetailsViewModel(int id, string name, bool hasJoined, ICollection<string> players, bool isOwner);
     }
 }

@@ -5,11 +5,11 @@
     <h1 id="TourneyName" runat="server"></h1>
     <h2>Status: <span id="TourneyStatus" runat="server">Open</span></h2>
 
-    <div id="OnOpenEvent" runat="server">
+    <div id="OnOpenEvent" runat="server" visible="False">
         <asp:Button ID="JoinButton" runat="server" OnClick="JoinButton_Click" Text="Join" />
     </div>
 
-    <div id="OwnerOptions" runat="server">
+    <div id="OwnerOptions" runat="server" visible="False">
 
         <asp:Button ID="StartTourneyButton" runat="server" OnClick="StartTourneyButton_Click" Text="Start Tourney" />
 

@@ -113,5 +113,17 @@ namespace BeerPong.Services
 
             return false;
         }
+
+        public bool UserIsOwner(int tourneyId, string userId)
+        {
+            var tourney = this.tourneyRepository.GetById(tourneyId);
+
+            if (tourney.OwnerId == userId)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
