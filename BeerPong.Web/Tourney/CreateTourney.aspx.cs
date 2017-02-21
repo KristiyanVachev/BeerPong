@@ -23,6 +23,8 @@ namespace BeerPong.Web.Tourney
             var args = new CreateTourneyEventArgs(name);
 
             this.MyCreateTourney?.Invoke(this, args);
+            
+            this.Response.Redirect($"/Tourney/TourneyDetails?id={Model.Id}");
         }
 
     }
