@@ -17,7 +17,11 @@ namespace BeerPong.Models
 
         public string Name { get; set; }
 
-        //public int GamesWon { get; set; }
+        public int TourneysWon { get; set; }
+
+        public int TotalGames { get; set; }
+
+        public int GamesWon { get; set; }
 
         //public virtual ICollection<Tourney> Tourneys
         //{

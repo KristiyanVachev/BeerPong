@@ -22,6 +22,24 @@ namespace BeerPong.Web.Tourney {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl TourneyName;
         
         /// <summary>
+        /// TourneyStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TourneyStatus;
+        
+        /// <summary>
+        /// OnOpenEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OnOpenEvent;
+        
+        /// <summary>
         /// JoinButton control.
         /// </summary>
         /// <remarks>
@@ -29,5 +47,50 @@ namespace BeerPong.Web.Tourney {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button JoinButton;
+        
+        /// <summary>
+        /// OwnerOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OwnerOptions;
+        
+        /// <summary>
+        /// StartTourneyButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button StartTourneyButton;
+        
+        /// <summary>
+        /// EndTourney control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EndTourney;
+        
+        /// <summary>
+        /// PlayersDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList PlayersDropDown;
+        
+        /// <summary>
+        /// EndTourneyButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EndTourneyButton;
     }
 }

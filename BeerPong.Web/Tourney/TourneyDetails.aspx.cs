@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BeerPong.MVP.Tourney.Details;
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -57,6 +58,22 @@ namespace BeerPong.Web.Tourney
             {
                 this.JoinButton.Text = "Join";
             }
+        }
+
+
+        protected void StartTourneyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void EndTourneyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public IEnumerable<string> BindPlayers()
+        {
+            return this.Model.Players;
         }
     }
 }

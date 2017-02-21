@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using BeerPong.Models.Contracts;
 
 namespace BeerPong.Models
 {
-    public class Tourney
+    public class Tourney : ITourney
     {
         private ICollection<Player> players;
         private ICollection<Team> teams;
@@ -20,12 +22,22 @@ namespace BeerPong.Models
             : this()
         {
             this.Name = name;
+            this.Status = "Open";
         }
 
         [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        //TOOD: Extract do enum = Open, Active, Closed
+        public string Status { get; set; }
+
+        [ForeignKey("Winner")]
+        public string WinnerId { get; set; }
+
+        [ForeignKey("Id")]
+        public virtual User Winner { get; set; }
 
         public virtual ICollection<Player> Players
         {

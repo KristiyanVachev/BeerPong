@@ -3,7 +3,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 id="TourneyName" runat="server"></h1>
+    <h2>Status: <span id="TourneyStatus" runat="server">Open</span></h2>
 
-    <asp:Button ID="JoinButton" runat="server" OnClick="JoinButton_Click" Text="Join" />
+    <div id="OnOpenEvent" runat="server">
+        <asp:Button ID="JoinButton" runat="server" OnClick="JoinButton_Click" Text="Join" />
+    </div>
+
+    <div id="OwnerOptions" runat="server">
+
+        <asp:Button ID="StartTourneyButton" runat="server" OnClick="StartTourneyButton_Click" Text="Start Tourney" />
+
+        <div id="EndTourney" runat="server">
+            <asp:DropDownList ID="PlayersDropDown" runat="server"
+            AutoPostBack="True"
+            EnableViewState="True"
+            SelectMethod="BindPlayers"
+            CssClass="category-dropdown">
+        </asp:DropDownList>
+
+            <asp:Button ID="EndTourneyButton" runat="server" OnClick="EndTourneyButton_Click" Text="End Tourney" />
+        </div>
+
+    </div>
 
 </asp:Content>

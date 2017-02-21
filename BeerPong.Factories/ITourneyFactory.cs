@@ -6,6 +6,7 @@ namespace BeerPong.Factories
     {
         Tourney CreateTourney(string name);
 
-        Player CreatePlayer(Tourney tourney, User user);
+        //TODO Move
+        Player CreatePlayer(Tourney tourney, User user, string name);
     }
 }

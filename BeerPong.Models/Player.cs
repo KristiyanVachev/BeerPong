@@ -10,15 +10,18 @@ namespace BeerPong.Models
             
         }
 
-        public Player(Tourney tourney, User user)
+        public Player(Tourney tourney, User user, string name)
         {
             //TODO Guard
             this.Tourney = tourney;
             this.User = user;
+            this.Name = name;
         }
 
         [Key]
         public int PlayerId { get; set; }
+
+        public string Name { get; set; }
 
         public string UserId { get; set; }
 

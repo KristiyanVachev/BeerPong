@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BeerPong.Services.Contracts;
 using Bytes2you.Validation;
@@ -51,7 +52,13 @@ namespace BeerPong.MVP.Tourney.Details
 
             var playerHasJoined = this.Service.UserHasJoined(tourneyId, userId);
 
-            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined);
+            List<string> playerNames = new List<string>();
+            foreach (var tourneyPlayer in tourney.Players)
+            {
+                playerNames.Add(tourneyPlayer.Name);
+            }
+
+            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames);
 
             this.View.Model = viewModel;
         }

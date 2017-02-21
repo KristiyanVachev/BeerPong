@@ -80,7 +80,7 @@ namespace BeerPong.Services
             var tourney = this.tourneyRepository.GetById(tourneyId);
             var user = this.userRepository.GetById(userId);
 
-            var newPlayer = this.factory.CreatePlayer(tourney, user);
+            var newPlayer = this.factory.CreatePlayer(tourney, user, user.Email);
 
             this.playerRepository.Add(newPlayer);
             
