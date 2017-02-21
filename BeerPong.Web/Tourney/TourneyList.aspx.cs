@@ -20,7 +20,7 @@ namespace BeerPong.Web.Tourney
 
         public IEnumerable<TourneyDetailsViewModel> Select()
         {
-            return this.Model.Products;
+            return this.Model.Tourneys;
         }
     }
 }

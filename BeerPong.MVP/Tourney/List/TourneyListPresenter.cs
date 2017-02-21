@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BeerPong.MVP.Tourney.Details;
 using BeerPong.Services.Contracts;
+using Bytes2you.Validation;
 using WebFormsMvp;
 
 namespace BeerPong.MVP.Tourney.List
@@ -15,15 +16,8 @@ namespace BeerPong.MVP.Tourney.List
         public TourneyListPresenter(ITourneyListView view, ITourneyService service, IViewModelFactory factory)
             : base(view)
         {
-            if (service == null)
-            {
-                throw new ArgumentNullException("service cannot be null");
-            }
-
-            if (factory == null)
-            {
-                throw new ArgumentNullException("factory cannot be null");
-            }
+            Guard.WhenArgument(service, "Service").IsNull().Throw();
+            Guard.WhenArgument(factory, "Factory").IsNull().Throw();
 
             this.service = service;
             this.factory = factory;
@@ -31,13 +25,12 @@ namespace BeerPong.MVP.Tourney.List
             this.View.MyInit += View_MyInit;
         }
 
-
         private void View_MyInit(object sender, TourneyListEventArgs e)
         {
             IEnumerable<TourneyDetailsViewModel> tourneys = this.service.GetTourneys()
                 .Select(x => this.factory.CreateTourneyDetailsViewModel(x.Id, x.Name, x.Status));
 
-            this.View.Model.Products = tourneys;
+            this.View.Model.Tourneys = tourneys;
         }
     }
 }

@@ -5,6 +5,6 @@ namespace BeerPong.MVP.Tourney.List
 {
     public class TourneyListViewModel
     {
-        public IEnumerable<TourneyDetailsViewModel> Products { get; set; }
+        public IEnumerable<TourneyDetailsViewModel> Tourneys { get; set; }
     }
 }
