@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Security;
 using BeerPong.MVP.Tourney.Details;
 using WebFormsMvp;
 using WebFormsMvp.Web;
@@ -49,6 +50,7 @@ namespace BeerPong.Web.Tourney
                 {
                     this.OwnerOptions.Visible = true;
                 }
+                
 
             }
             catch (Exception)
@@ -84,9 +86,7 @@ namespace BeerPong.Web.Tourney
         protected void EndTourneyButton_Click(object sender, EventArgs e)
         {
             var winnerName = this.PlayersDropDown.SelectedValue;
-
-            int tourneyId = int.Parse(this.Request.QueryString["id"]);
-            var poop = this.Model.Id;
+            int tourneyId = this.Model.Id;
 
             var args = new EndTourneyEventArgs(tourneyId, winnerName);
             this.MyEndTourney.Invoke(this, args);

@@ -104,16 +104,17 @@ namespace BeerPong.Services
         {
             var tourney = this.tourneyRepository.GetById(tourneyId);
             
-            //TODO: get by name
             var winner = this.userRepository.GetAll(x => x.Email == winnerName).FirstOrDefault();
 
             if (winner != null)
             {
                 tourney.Winner = winner;
+                winner.TourneysWon++;
             }
 
             tourney.Status = "Finished";
             this.tourneyRepository.Update(tourney);
+            this.userRepository.Update(winner);
             this.unitOfWork.Commit();
 
         }
