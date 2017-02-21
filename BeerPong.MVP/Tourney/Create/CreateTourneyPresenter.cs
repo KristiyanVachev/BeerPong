@@ -1,6 +1,7 @@
 ﻿using System;
 using BeerPong.Services.Contracts;
 using Bytes2you.Validation;
+using Microsoft.AspNet.Identity;
 using WebFormsMvp;
 
 namespace BeerPong.MVP.Tourney.Create
@@ -27,7 +28,9 @@ namespace BeerPong.MVP.Tourney.Create
         }
         public void OnCreateTourney(object sender, CreateTourneyEventArgs e)
         {
-            var tourney = this.service.CreateTourney(e.Name);
+            var userId = e.Context.User.Identity.GetUserId();
+
+            var tourney = this.service.CreateTourney(e.Name, userId);
             this.View.Model.Id = tourney.Id;
         }
     }

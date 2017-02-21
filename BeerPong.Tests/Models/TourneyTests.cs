@@ -1,4 +1,5 @@
 ﻿using BeerPong.Models;
+using Moq;
 using NUnit.Framework;
 
 namespace BeerPong.Tests.Models
@@ -10,7 +11,9 @@ namespace BeerPong.Tests.Models
         [TestCase("Pong at the Gong")]
         public void Constructor_ShouldSetName_Correctly(string name)
         {
-            var category = new Tourney(name);
+            var mockUser = new Mock<User>();
+
+            var category = new Tourney(name, mockUser.Object);
 
             Assert.AreSame(category.Name, name);
         }

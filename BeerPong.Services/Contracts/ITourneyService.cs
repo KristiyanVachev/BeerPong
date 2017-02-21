@@ -5,7 +5,7 @@ namespace BeerPong.Services.Contracts
 {
     public interface ITourneyService
     {
-        Tourney CreateTourney(string name);
+        Tourney CreateTourney(string name, string userId);
 
         Tourney GetById(int id);
 

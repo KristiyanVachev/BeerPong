@@ -18,10 +18,11 @@ namespace BeerPong.Models
             this.games = new HashSet<Game>();
         }
 
-        public Tourney(string name)
+        public Tourney(string name, User owner)
             : this()
         {
             this.Name = name;
+            this.Owner = owner;
             this.Status = "Open";
         }
 
@@ -32,6 +33,12 @@ namespace BeerPong.Models
 
         //TOOD: Extract do enum = Open, Active, Closed
         public string Status { get; set; }
+
+        [ForeignKey("Owner")]
+        public string OwnerId { get; set; }
+
+        [ForeignKey("Id")]
+        public virtual User Owner { get; set; }
 
         [ForeignKey("Winner")]
         public string WinnerId { get; set; }

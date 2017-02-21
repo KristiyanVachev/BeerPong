@@ -20,7 +20,7 @@ namespace BeerPong.Web.Tourney
         {
             var name = this.Name.Text;
 
-            var args = new CreateTourneyEventArgs(name);
+            var args = new CreateTourneyEventArgs(name, this.Context);
 
             this.MyCreateTourney?.Invoke(this, args);
             

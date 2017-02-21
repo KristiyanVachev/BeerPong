@@ -69,13 +69,13 @@ namespace BeerPong.Tests.Services
                 mockUnitOfWork.Object
                 );
 
-            service.CreateTourney(name);
+            service.CreateTourney(name, "");
 
-            mockFactory.Verify(x => x.CreateTourney(name), Times.Once);
+            mockFactory.Verify(x => x.CreateTourney(name, It.IsAny<User>()), Times.Once);
         }
 
-        [TestCase("TourneyName")]
-        public void CreateTourney_ShouldCallRepository(string name)
+        [TestCase("TourneyName", "")]
+        public void CreateTourney_ShouldCallRepository(string name, string userId)
         {
             var mockFactory = new Mock<ITourneyFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
@@ -91,13 +91,13 @@ namespace BeerPong.Tests.Services
                 mockUnitOfWork.Object
                 );
 
-            service.CreateTourney(name);
+            service.CreateTourney(name, userId);
 
             mockTourneyRepository.Verify(x => x.Add(It.IsAny<Tourney>()), Times.Once);
         }
 
-        [TestCase("TourneyName")]
-        public void CreateTourney_ShouldCallUnitOfWork(string name)
+        [TestCase("TourneyName", "")]
+        public void CreateTourney_ShouldCallUnitOfWork(string name, string userId)
         {
             var mockFactory = new Mock<ITourneyFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
@@ -113,7 +113,7 @@ namespace BeerPong.Tests.Services
                 mockUnitOfWork.Object
                 );
 
-            service.CreateTourney(name);
+            service.CreateTourney(name, userId);
 
             mockUnitOfWork.Verify(x => x.Commit(), Times.Once);
         }
