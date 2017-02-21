@@ -21,6 +21,7 @@ namespace BeerPong.MVP.Tourney.Details
 
             this.View.MyTourneyDetails += View_MyProductDetails;
             this.View.JoinTourney += View_MyJoinTourney;
+            this.View.MyEndTourney += View_MyEndTourney;
         }
 
         public ITourneyService Service
@@ -59,7 +60,7 @@ namespace BeerPong.MVP.Tourney.Details
                 playerNames.Add(tourneyPlayer.Name);
             }
 
-            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames, userIsOwner);
+            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames, userIsOwner, tourney.Status);
 
             this.View.Model = viewModel;
         }
@@ -80,6 +81,11 @@ namespace BeerPong.MVP.Tourney.Details
                 this.service.LeaveTourney(tourneyId, userId);
                 this.View.Model.HasJoined = false;
             }
+        }
+
+        public void View_MyEndTourney(object sender, EndTourneyEventArgs e)
+        {
+            this.Service.EndTourney(e.TourneyId, e.WinnerName);
         }
     }
 }

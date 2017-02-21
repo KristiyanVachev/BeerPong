@@ -99,6 +99,19 @@ namespace BeerPong.Services
             this.unitOfWork.Commit();
         }
 
+        public void EndTourney(int tourneyId, string winnerName)
+        {
+            var tourney = this.tourneyRepository.GetById(tourneyId);
+            
+            //TODO: get by name
+
+
+            tourney.Status = "Finished";
+            this.tourneyRepository.Update(tourney);
+            this.unitOfWork.Commit();
+
+        }
+
         public bool UserHasJoined(int tourneyId, string userId)
         {
             var tourney = this.tourneyRepository.GetById(tourneyId);

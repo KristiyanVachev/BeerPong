@@ -11,13 +11,14 @@ namespace BeerPong.MVP.Tourney.Details
 
         }
 
-        public TourneyDetailsViewModel(int id, string name, bool hasJoined, ICollection<string> players, bool isOwner)
+        public TourneyDetailsViewModel(int id, string name, bool hasJoined, ICollection<string> players, bool isOwner, string status)
         {
             this.Id = id;
             this.Name = name;
             this.HasJoined = hasJoined;
             this.Players = players;
             this.IsOwner = isOwner;
+            this.Status = status;
         }
 
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace BeerPong.MVP.Tourney.Details
         public ICollection<string> Players { get; set; }
 
         public bool IsOwner { get; set; }
+
+        public string Status { get; set; }
     }
 }

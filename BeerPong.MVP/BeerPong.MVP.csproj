@@ -63,6 +63,7 @@
     <Compile Include="Tourney\Create\CreateTourneyPresenter.cs" />
     <Compile Include="Tourney\Create\CreateTourneyViewModel.cs" />
     <Compile Include="Tourney\Create\ICreateTourneyView.cs" />
+    <Compile Include="Tourney\Details\EndTourneyEventArgs.cs" />
     <Compile Include="Tourney\Details\ITourneyDetailsView.cs" />
     <Compile Include="Tourney\Details\JoinTourneyEventArgs.cs" />
     <Compile Include="Tourney\Details\TourneyDetailsEventArgs.cs" />
@@ -86,6 +87,9 @@
       <Project>{e3000660-b521-458e-9aea-eab89801677d}</Project>
       <Name>BeerPong.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tourney\Details\EventArgs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,6 +19,8 @@ namespace BeerPong.Services.Contracts
 
         void LeaveTourney(int tourneyId, string userId);
 
+        void EndTourney(int tourneyId, string winnerName);
+
         bool UserHasJoined(int tourneyId, string userId);
 
         bool UserIsOwner(int tourneyId, string userId);

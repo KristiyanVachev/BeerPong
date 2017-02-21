@@ -8,5 +8,7 @@ namespace BeerPong.MVP.Tourney.Details
         event EventHandler<TourneyDetailsEventArgs> MyTourneyDetails;
 
         event EventHandler<JoinTourneyEventArgs> JoinTourney;
+
+        event EventHandler<EndTourneyEventArgs> MyEndTourney;
     }
 }

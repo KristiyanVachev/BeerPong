@@ -17,7 +17,6 @@ namespace BeerPong.Tests.Services
         public void Constructor_ShouldThrow_WhenArgumentIsNull()
         {
             //Arrange
-            var mockFactory = new Mock<ITourneyFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -213,5 +212,35 @@ namespace BeerPong.Tests.Services
 
             mockUnitOfWork.Verify(x => x.Commit(), Times.Once);
         }
+
+        [Test]
+        public void UserHasJoined_ShouldWorkCorrectly_WhenUserIsJoined()
+        {
+            var mockFactory = new Mock<ITourneyFactory>();
+            var mockTourneyRepository = new Mock<IRepository<Tourney>>();
+            var mockUserRepository = new Mock<IRepository<User>>();
+            var mockPlayerRepository = new Mock<IRepository<Player>>();
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+
+            var service = new TourneyService(
+                mockFactory.Object,
+                mockTourneyRepository.Object,
+                mockUserRepository.Object,
+                mockPlayerRepository.Object,
+                mockUnitOfWork.Object
+                );
+
+            var mockTourney = new Mock<Tourney>();
+           
+            //TODO fix the search logic to be testable
+
+            mockTourneyRepository.Setup(x => x.GetById(It.IsAny<int>())).Returns(mockTourney.Object);
+
+            service.EditTourney(mockTourney.Object);
+
+            mockUnitOfWork.Verify(x => x.Commit(), Times.Once);
+        }
+
+
     }
 }

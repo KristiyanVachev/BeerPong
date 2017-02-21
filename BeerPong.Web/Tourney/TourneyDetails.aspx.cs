@@ -11,6 +11,7 @@ namespace BeerPong.Web.Tourney
     {
         public event EventHandler<TourneyDetailsEventArgs> MyTourneyDetails;
         public event EventHandler<JoinTourneyEventArgs> JoinTourney;
+        public event EventHandler<EndTourneyEventArgs> MyEndTourney;
 
         private bool userHasJoined = false;
         private bool userIsOwner = false;
@@ -26,6 +27,7 @@ namespace BeerPong.Web.Tourney
                 this.MyTourneyDetails?.Invoke(this, args);
 
                 this.TourneyName.InnerText = this.Model.Name;
+                this.TourneyStatus.InnerText = this.Model.Status;
 
                 //TODO userIsLogged and tourney is open
                 if (Request.IsAuthenticated)
@@ -81,6 +83,13 @@ namespace BeerPong.Web.Tourney
 
         protected void EndTourneyButton_Click(object sender, EventArgs e)
         {
+            var winnerName = this.PlayersDropDown.SelectedValue;
+
+            int tourneyId = int.Parse(this.Request.QueryString["id"]);
+            var poop = this.Model.Id;
+
+            var args = new EndTourneyEventArgs(tourneyId, winnerName);
+            this.MyEndTourney.Invoke(this, args);
 
         }
 
