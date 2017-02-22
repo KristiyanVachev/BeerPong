@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="" title=""  description="">
+        <siteMapNode url="/Tourney/TourneyList.aspx" title="Tourneys"  description="A list of all tourneys." />
+        <siteMapNode url="/Tourney/CreateTourney.aspx" title="Create Tourney"  description="Creating tourneys" />
+        <siteMapNode url="/About" title="About"  description="About page" />
+        <siteMapNode url="/Contact" title="Contact"  description="Contact page" />
+        <siteMapNode url="/" title="Home"  description="Home page" />
+        <siteMapNode url="/Account/Register" title="Register"  description="Registration" />
+        <siteMapNode url="/Account/Login" title="Login"  description="Login" />
+        <siteMapNode url="/Administration/Tourneys.aspx" title="Manage Tourneys"  description="Managing tourneys" />
+    </siteMapNode>
+</siteMap>
