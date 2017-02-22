@@ -10,7 +10,7 @@ namespace BeerPong.Web.App_Start.NinjectModules
     {
         public override void Load()
         {
-            this.Bind<ITourneyFactory>().ToFactory().InRequestScope();
+            this.Bind<IFactory>().ToFactory().InRequestScope();
 
             this.Bind<IViewModelFactory>().ToFactory().InRequestScope();
         }

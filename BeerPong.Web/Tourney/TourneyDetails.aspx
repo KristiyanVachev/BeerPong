@@ -11,8 +11,6 @@
 
     <div id="OwnerOptions" runat="server" visible="False">
 
-        <asp:Button ID="StartTourneyButton" runat="server" OnClick="StartTourneyButton_Click" Text="Start Tourney" />
-
         <div id="EndTourney" runat="server">
             <asp:DropDownList ID="PlayersDropDown" runat="server"
             AutoPostBack="True"

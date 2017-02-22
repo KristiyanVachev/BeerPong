@@ -9,7 +9,7 @@ namespace BeerPong.Web.Tourney
     public partial class CreateTourney : MvpPage<CreateTourneyViewModel>, ICreateTourneyView
     {
 
-        public event EventHandler<CreateTourneyEventArgs> MyCreateTourney;
+        public event EventHandler<CreateTourneyEventArgs> CreateTourney;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace BeerPong.Web.Tourney
 
             var args = new CreateTourneyEventArgs(name, this.Context);
 
-            this.MyCreateTourney?.Invoke(this, args);
+            this.CreateTourney?.Invoke(this, args);
             
             this.Response.Redirect($"/Tourney/TourneyDetails?id={Model.Id}");
         }

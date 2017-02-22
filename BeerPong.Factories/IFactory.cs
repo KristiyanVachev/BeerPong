@@ -2,11 +2,10 @@
 
 namespace BeerPong.Factories
 {
-    public interface ITourneyFactory
+    public interface IFactory
     {
         Tourney CreateTourney(string name, User owner);
 
-        //TODO Move
         Player CreatePlayer(Tourney tourney, User user, string name);
     }
 }

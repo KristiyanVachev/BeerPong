@@ -47,7 +47,7 @@ namespace BeerPong.Web.Tourney
 
                 this.userIsOwner = this.Model.IsOwner;
 
-                if (this.userIsOwner)
+                if (this.userIsOwner && this.status != "Finished")
                 {
                     this.OwnerOptions.Visible = true;
                 }
@@ -73,12 +73,6 @@ namespace BeerPong.Web.Tourney
             {
                 this.JoinButton.Text = "Join";
             }
-        }
-
-
-        protected void StartTourneyButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         protected void EndTourneyButton_Click(object sender, EventArgs e)

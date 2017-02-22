@@ -12,13 +12,13 @@ namespace BeerPong.Services
     public class TourneyService : ITourneyService
     {
         //TODO make them properties
-        private readonly ITourneyFactory factory;
+        private readonly IFactory factory;
         private readonly IRepository<Tourney> tourneyRepository;
         private readonly IRepository<User> userRepository;
         private readonly IRepository<Player> playerRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public TourneyService(ITourneyFactory factory,
+        public TourneyService(IFactory factory,
             IRepository<Tourney> tourneyRepository,
             IRepository<User> userRepository,
             IRepository<Player> playeRepository,

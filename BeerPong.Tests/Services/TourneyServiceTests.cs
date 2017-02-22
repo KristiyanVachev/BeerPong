@@ -35,7 +35,7 @@ namespace BeerPong.Tests.Services
         public void Constructor_ShouldNotThrow_WhenArgumentsAreValid()
         {
             //Arrange
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -54,7 +54,7 @@ namespace BeerPong.Tests.Services
         [TestCase("Beer pong tourney")]
         public void CreateTourney_ShouldCallFactoryCreateTourney(string name)
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -76,7 +76,7 @@ namespace BeerPong.Tests.Services
         [TestCase("TourneyName", "")]
         public void CreateTourney_ShouldCallRepository(string name, string userId)
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -98,7 +98,7 @@ namespace BeerPong.Tests.Services
         [TestCase("TourneyName", "")]
         public void CreateTourney_ShouldCallUnitOfWork(string name, string userId)
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -122,7 +122,7 @@ namespace BeerPong.Tests.Services
         public void GetById_ShouldCallRepositoryWithCorrectId(int id)
         {
             //Arrange
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -146,7 +146,7 @@ namespace BeerPong.Tests.Services
         [Test]
         public void GetTourneys_ShouldCallRepositoryEntities()
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -168,7 +168,7 @@ namespace BeerPong.Tests.Services
         [Test]
         public void EditProduct_ShouldCallRepositoryUpdate()
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -192,7 +192,7 @@ namespace BeerPong.Tests.Services
         [Test]
         public void EditProduct_ShouldCallUnitOfWork()
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
@@ -216,7 +216,7 @@ namespace BeerPong.Tests.Services
         [Test]
         public void UserHasJoined_ShouldWorkCorrectly_WhenUserIsJoined()
         {
-            var mockFactory = new Mock<ITourneyFactory>();
+            var mockFactory = new Mock<IFactory>();
             var mockTourneyRepository = new Mock<IRepository<Tourney>>();
             var mockUserRepository = new Mock<IRepository<User>>();
             var mockPlayerRepository = new Mock<IRepository<Player>>();
