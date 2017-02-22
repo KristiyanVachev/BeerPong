@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateTourney.aspx.cs" Inherits="BeerPong.Web.Tourney.CreateTourney" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+    <br>
         <div class="form-horizontal">
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Name</asp:Label>
@@ -15,4 +15,5 @@
                 </div>
             </div>
         </div>
+
 </asp:Content>

@@ -34,6 +34,5 @@ namespace BeerPong.Web.Tourney
             
             this.Response.Redirect($"/Tourney/TourneyDetails?id={Model.Id}");
         }
-
     }
 }
