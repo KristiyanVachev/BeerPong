@@ -13,11 +13,19 @@ namespace BeerPong.Web.Tourney
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Request.IsAuthenticated)
+            {
+                this.Response.Redirect($"/Account/Login");
+            }
         }
 
         protected void CreateTourney_Click(object sender, EventArgs e)
         {
+            if (!Request.IsAuthenticated)
+            {
+                this.Response.Redirect($"/Account/Login");
+            }
+
             var name = this.Name.Text;
 
             var args = new CreateTourneyEventArgs(name, this.Context);

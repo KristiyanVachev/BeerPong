@@ -261,6 +261,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddPhoneNumber.aspx.cs">
@@ -370,6 +371,7 @@
     </Compile>
     <Compile Include="Administration\Tourneys.aspx.cs">
       <DependentUpon>Tourneys.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administration\Tourneys.aspx.designer.cs">
       <DependentUpon>Tourneys.aspx</DependentUpon>
