@@ -16,6 +16,7 @@ namespace BeerPong.Web.Tourney
 
         private bool userHasJoined = false;
         private bool userIsOwner = false;
+        private string status = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,35 +29,32 @@ namespace BeerPong.Web.Tourney
                 this.MyTourneyDetails?.Invoke(this, args);
 
                 this.TourneyName.InnerText = this.Model.Name;
+
+                this.status = this.Model.Status;
                 this.TourneyStatus.InnerText = this.Model.Status;
 
-                //TODO userIsLogged and tourney is open
-                if (Request.IsAuthenticated)
+                if (Request.IsAuthenticated && this.status == "Open")
                 {
                     this.OnOpenEvent.Visible = true;
                 }
 
                 this.userHasJoined = this.Model.HasJoined;
-                //TODO hide if userHasJoined is not assigned
+
                 if (userHasJoined)
                 {
                     this.JoinButton.Text = "Leave";
                 }
 
-                //TODO If username is the same as tourney's creator, display start game button
                 this.userIsOwner = this.Model.IsOwner;
 
                 if (this.userIsOwner)
                 {
                     this.OwnerOptions.Visible = true;
                 }
-                
-
             }
             catch (Exception)
             {
-                //TODO show error message
-                return;
+                this.Response.Redirect($"/Tourney/TourneyList");
             }
         }
 
@@ -90,7 +88,6 @@ namespace BeerPong.Web.Tourney
 
             var args = new EndTourneyEventArgs(tourneyId, winnerName);
             this.MyEndTourney.Invoke(this, args);
-
         }
 
         public IEnumerable<string> BindPlayers()
