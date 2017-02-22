@@ -1,32 +1,55 @@
+using System;
+using System.Data.Entity;
+using BeerPong.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace BeerPong.Data.Migrations
 {
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BeerPong.Data.BeerPongDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BeerPongDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
             ContextKey = "BeerPong.Data.BeerPongDbContext";
 
-            //Database.SetInitializer(new DropCreateDatabaseAlways<BeerPongDbContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<BeerPongDbContext>());
         }
 
-        protected override void Seed(BeerPong.Data.BeerPongDbContext context)
+        protected override void Seed(BeerPongDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            const string roleName = "Admin";
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var userRole = new IdentityRole()
+            {
+                Name = roleName
+            };
+
+            context.Roles.Add(userRole);
+            context.SaveChanges();
+
+            var hasher = new PasswordHasher();
+
+            var user = new User()
+            {
+                PasswordHash = hasher.HashPassword("nanana21"),
+                Email = "mewtwo@gmail.com"
+                //SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            context.Users.AddOrUpdate(user);
+            context.SaveChanges();
+
+            user.Roles.Add(new IdentityUserRole
+            {
+                RoleId = userRole.Id,
+                UserId = user.Id
+            });
+
+            context.Users.AddOrUpdate(user);
+            context.SaveChanges();
         }
     }
 }

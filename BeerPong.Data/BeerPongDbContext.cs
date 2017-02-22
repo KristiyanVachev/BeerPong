@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using BeerPong.Data.Migrations;
 using BeerPong.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -8,7 +9,7 @@ namespace BeerPong.Data
     {
         public BeerPongDbContext(): base("BeerPongDb")
         {
-
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BeerPongDbContext, Configuration>());
         }
 
         public static BeerPongDbContext Create()
