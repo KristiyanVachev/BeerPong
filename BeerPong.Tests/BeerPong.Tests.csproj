@@ -87,6 +87,7 @@
     <Compile Include="Data\UnitOfWorkTests.cs" />
     <Compile Include="Models\TourneyTests.cs" />
     <Compile Include="MVP\Administration\TourneyPresenterTests.cs" />
+    <Compile Include="MVP\Tourney\CreateTourneyPresenterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TourneyServiceTests.cs" />
   </ItemGroup>
