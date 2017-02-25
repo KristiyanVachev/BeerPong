@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Tourneys.aspx.cs" Inherits="BeerPong.Web.Administration.Tourneys" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+ 
+     CodeBehind="Tourneys.aspx.cs" Inherits="BeerPong.Web.Administration.Tourneys" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <asp:GridView runat="server" ID="TourneysGridView"

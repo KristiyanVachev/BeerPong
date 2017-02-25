@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeerPong.Data
 {
-    public class BeerPongDbContext : IdentityDbContext<User>
+    public class BeerPongDbContext : IdentityDbContext<User>, IBeerPongDbContext
     {
         public BeerPongDbContext(): base("BeerPongDb")
         {
@@ -24,5 +24,18 @@ namespace BeerPong.Data
         public virtual IDbSet<Game> Games { get; set; }
 
         public virtual IDbSet<Tourney> Tourneys { get; set; }
+    }
+
+    public interface IBeerPongDbContext
+    {
+        IDbSet<Player> Players { get; }
+
+        IDbSet<Team> Teams { get; }
+
+        IDbSet<Game> Games { get; }
+
+        IDbSet<Tourney> Tourneys { get; }
+
+        int SaveCanges();
     }
 }

@@ -8,7 +8,7 @@ namespace BeerPong.MVP.Tourney.Create
 {
     public class CreateTourneyPresenter : Presenter<ICreateTourneyView>
     {
-        private ITourneyService service;
+        private readonly ITourneyService service;
 
         public CreateTourneyPresenter(ICreateTourneyView view, ITourneyService service) : base(view)
         {
@@ -16,16 +16,7 @@ namespace BeerPong.MVP.Tourney.Create
 
             this.View.MyCreateTourney += OnCreateTourney;
         }
-
-        public ITourneyService Service
-        {
-            get { return this.service; }
-            set
-            {
-                Guard.WhenArgument(value, "service").IsNull();
-                this.service = value;
-            }
-        }
+        
         public void OnCreateTourney(object sender, CreateTourneyEventArgs e)
         {
             var userId = e.Context.User.Identity.GetUserId();

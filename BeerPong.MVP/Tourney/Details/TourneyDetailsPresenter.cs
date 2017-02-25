@@ -10,38 +10,21 @@ namespace BeerPong.MVP.Tourney.Details
 {
     public class TourneyDetailsPresenter : Presenter<ITourneyDetailsView>
     {
-        private ITourneyService service;
-        private IViewModelFactory factory;
+        private readonly ITourneyService service;
+        private readonly IViewModelFactory factory;
         //private IJoinTourneyService joinTourneyService;
 
         public TourneyDetailsPresenter(ITourneyDetailsView view, ITourneyService service, IViewModelFactory factory) : base(view)
         {
-            this.Service = service;
-            this.Factory = factory;
+            Guard.WhenArgument(service, "service").IsNull();
+            Guard.WhenArgument(factory, "factory").IsNull();
+
+            this.service = service;
+            this.factory = factory;
 
             this.View.MyTourneyDetails += View_MyProductDetails;
             this.View.JoinTourney += View_MyJoinTourney;
             this.View.MyEndTourney += View_MyEndTourney;
-        }
-
-        public ITourneyService Service
-        {
-            get { return this.service; }
-            set
-            {
-                Guard.WhenArgument(value, "service").IsNull();
-                this.service = value;
-            }
-        }
-
-        public IViewModelFactory Factory
-        {
-            get { return this.factory; }
-            set
-            {
-                Guard.WhenArgument(value, "factory").IsNull();
-                this.factory = value;
-            }
         }
 
         public void View_MyProductDetails(object sender, TourneyDetailsEventArgs e)
@@ -49,9 +32,9 @@ namespace BeerPong.MVP.Tourney.Details
             var tourneyId = e.Id;
             var userId = e.Context.User.Identity.GetUserId();
 
-            var tourney = this.Service.GetById(tourneyId);
+            var tourney = this.service.GetById(tourneyId);
 
-            var playerHasJoined = this.Service.UserHasJoined(tourneyId, userId);
+            var playerHasJoined = this.service.UserHasJoined(tourneyId, userId);
             var userIsOwner = this.service.UserIsOwner(tourneyId, userId);
 
             List<string> playerNames = new List<string>();
@@ -60,7 +43,7 @@ namespace BeerPong.MVP.Tourney.Details
                 playerNames.Add(tourneyPlayer.Name);
             }
 
-            var viewModel = this.Factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames, userIsOwner, tourney.Status);
+            var viewModel = this.factory.CreateTourneyDetailsViewModel(tourney.Id, tourney.Name, playerHasJoined, playerNames, userIsOwner, tourney.Status);
 
             this.View.Model = viewModel;
         }
@@ -73,7 +56,7 @@ namespace BeerPong.MVP.Tourney.Details
 
             if (!e.IsJoined)
             {
-                this.Service.JoinTourney(tourneyId, userId);
+                this.service.JoinTourney(tourneyId, userId);
                 this.View.Model.HasJoined = true;
             }
             else
@@ -85,7 +68,7 @@ namespace BeerPong.MVP.Tourney.Details
 
         public void View_MyEndTourney(object sender, EndTourneyEventArgs e)
         {
-            this.Service.EndTourney(e.TourneyId, e.WinnerName);
+            this.service.EndTourney(e.TourneyId, e.WinnerName);
         }
     }
 }

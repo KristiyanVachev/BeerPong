@@ -16,9 +16,11 @@ namespace BeerPong.Tests.MVP.Administration
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenAnArgumentIsNull()
         {
+            // Arrange
             var mockView = new Mock<ITourneyView>();
             var mockFactory = new Mock<IViewModelFactory>();
 
+            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new TourneyPresenter(mockView.Object, null, mockFactory.Object));
         }
 
@@ -29,7 +31,7 @@ namespace BeerPong.Tests.MVP.Administration
             var mockService = new Mock<ITourneyService>();
             var mockFactory = new Mock<IViewModelFactory>();
 
-            mockService.Setup(s => s.GetById(It.IsAny<int>())).Returns(new Tourney());
+            mockService.Setup(s => s.GetById(It.IsAny<int>())).Returns(new BeerPong.Models.Tourney());
 
             var presenter = new TourneyPresenter(mockView.Object, mockService.Object, mockFactory.Object);
 
@@ -39,6 +41,7 @@ namespace BeerPong.Tests.MVP.Administration
         [Test]
         public void ViewMyInit_ShouldCallServiceGetProducts()
         {
+            // Arrange
             var mockView = new Mock<ITourneyView>();
             mockView.Setup(v => v.Model).Returns(new TourneyListViewModel());
 
@@ -47,8 +50,10 @@ namespace BeerPong.Tests.MVP.Administration
 
             var presenter = new TourneyPresenter(mockView.Object, mockedService.Object, mockFactory.Object);
 
+            // Act
             mockView.Raise(v => v.MyInit += null, EventArgs.Empty);
 
+            // Assert
             mockedService.Verify(s => s.GetTourneys(), Times.Once);
         }
 
